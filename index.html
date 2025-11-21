@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Agrivoultion</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Noto+Sans+Devanagari:wght@400;600&family=Noto+Sans+Oriya:wght@400;600&family=Poppins:wght@400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="grain-overlay"></div>
+    <header class="hero">
+      <nav class="navbar">
+        <div class="brand">
+          <span class="brand-icon">🌱</span>
+          <span class="brand-text" data-i18n="brand">Agrivoultion</span>
+        </div>
+        <select id="language-switcher" aria-label="Change language">
+          <option value="en">ENGLISH</option>
+          <option value="od">ODIA</option>
+          <option value="hi">HINDI</option>
+        </select>
+        <button type="button" class="login-btn" id="open-login" data-i18n="navLogin">
+          Login
+        </button>
+        <input type="checkbox" id="menu-toggle" class="menu-toggle" />
+        <label for="menu-toggle" class="toggle-label">
+          <span></span>
+          <span></span>
+          <span></span>
+        </label>
+        <ul class="nav-links">
+          <li><a href="#solutions" data-i18n="navSolutions">Solutions</a></li>
+          <li><a href="#impact" data-i18n="navImpact">Impact</a></li>
+          <li><a href="#partners" data-i18n="navPartners">Partners</a></li>
+          <li>
+            <a href="#contact" class="cta-link" data-i18n="navContact"
+              >Get Involved</a
+            >
+          </li>
+        </ul>
+      </nav>
+
+      <section class="hero-content">
+        <div class="hero-text">
+          <img
+            class="hero-farmer"
+            src="farmerpoint.png"
+            alt="Illustration of a farmer pointing ahead"
+            loading="lazy"
+          />
+          <div class="hero-copy">
+            <p class="eyebrow" data-i18n="heroEyebrow">
+              Smart farming for resilient futures
+            </p>
+            <h1 data-i18n="heroHeadline">
+              Reimagining agriculture through data, design, and stewardship.
+            </h1>
+            <p class="lead" data-i18n="heroLead">
+              Agrivoultion blends regenerative practices with sensor
+              intelligence so farmers can grow more with less, restore soil
+              health, and protect our planet.
+            </p>
+            <div class="cta-group">
+              <a class="btn primary" href="#contact" data-i18n="ctaPrimary"
+                >Join the movement</a
+              >
+              <a class="btn ghost" href="#impact" data-i18n="ctaSecondary"
+                >See the impact</a
+              >
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="bubble-deck" aria-label="Agrivoultion highlights">
+        <article
+          class="bubble-card"
+          style="--bubble-bg: url('farmer_community.jpg')"
+        >
+          <div class="bubble-face">
+            <h3 data-i18n="bubbleCommunityTitle">Community</h3>
+            <p data-i18n="bubbleCommunityBody">
+              Our community hub unites growers, mentors, and local champions to
+              swap best practices, celebrate harvests, and mobilize support in
+              moments that matter.
+            </p>
+          </div>
+        </article>
+
+        <article class="bubble-card" style="--bubble-bg: url('Aifarmer.jpg')">
+          <div class="bubble-face">
+            <h3 data-i18n="bubbleAiTitle">Arnak AI</h3>
+            <p data-i18n="bubbleAiBody">
+              Arnak AI listens to farmer challenges, answers agronomy queries,
+              scans market trends, and keeps every feature of Agrivoultion just
+              one chat away.
+            </p>
+          </div>
+        </article>
+
+        <article class="bubble-card" style="--bubble-bg: url('market.jpg')">
+          <div class="bubble-face">
+            <h3 data-i18n="bubbleMarketTitle">Market</h3>
+            <p data-i18n="bubbleMarketBody">
+              Our market lane connects co-ops, buyers, and logistics partners so
+              every crop moves from field to fair price with clarity.
+            </p>
+          </div>
+        </article>
+
+        <article class="bubble-card" style="--bubble-bg: url('learnhub.jpg')">
+          <div class="bubble-face">
+            <h3 data-i18n="bubbleLearnTitle">Learn Hub</h3>
+            <p data-i18n="bubbleLearnBody">
+              Learn Hub blends micro-courses, live labs, and agritech primers so
+              newcomers and experts grow skills side by side.
+            </p>
+          </div>
+        </article>
+
+        <article class="bubble-card" style="--bubble-bg: url('campagin.jpg')">
+          <div class="bubble-face">
+            <h3 data-i18n="bubbleCampaignTitle">Campaign</h3>
+            <p data-i18n="bubbleCampaignBody">
+              Field campaigns tour villages with demos on organic methods,
+              climate readiness, and collective stewardship for soil and water.
+            </p>
+          </div>
+        </article>
+      </section>
+    </header>
+
+    <div class="login-modal" id="login-modal" aria-hidden="true">
+      <div class="modal-overlay" id="login-overlay"></div>
+      <div class="modal-card" role="dialog" aria-modal="true" aria-labelledby="login-title">
+        <button type="button" class="modal-close" id="close-login" aria-label="Close login form">
+          ×
+        </button>
+        <h2 id="login-title" data-i18n="loginTitle">Access your Agrivoultion account</h2>
+        <div class="login-switch">
+          <button type="button" class="switch-btn active" data-login-target="farmer" data-i18n="farmerTab">
+            Farmer Login
+          </button>
+          <button type="button" class="switch-btn" data-login-target="buyer" data-i18n="buyerTab">
+            Buyer Login
+          </button>
+        </div>
+        <button type="button" class="google-btn">
+          <span class="google-icon">G</span>
+          <span data-i18n="googleButton">Continue with Google</span>
+        </button>
+        <div class="divider"><span>or</span></div>
+        <form class="login-form active" data-login="farmer">
+          <label>
+            <span data-i18n="farmerNameLabel">Farmer Name</span>
+            <input type="text" required placeholder="Anaya Rao" data-i18n-placeholder="farmerNamePlaceholder" />
+          </label>
+          <label>
+            <span data-i18n="farmerIdLabel">Farm ID / Email</span>
+            <input type="text" required placeholder="farm-1024" data-i18n-placeholder="farmerIdPlaceholder" />
+          </label>
+          <label>
+            <span data-i18n="farmerRegionLabel">Region</span>
+            <input type="text" required placeholder="Odisha" data-i18n-placeholder="farmerRegionPlaceholder" />
+          </label>
+          <button type="submit" data-i18n="loginAction">Login now</button>
+          <p class="register-note">
+            <span data-i18n="registerPrompt">New to Agrivoultion?</span>
+            <a href="#" data-i18n="registerLink">Create your farm profile</a>
+          </p>
+        </form>
+        <form class="login-form" data-login="buyer">
+          <label>
+            <span data-i18n="buyerOrgLabel">Organization / Buyer Name</span>
+            <input type="text" required placeholder="Harvest Co." data-i18n-placeholder="buyerOrgPlaceholder" />
+          </label>
+          <label>
+            <span data-i18n="buyerEmailLabel">Business Email</span>
+            <input type="email" required placeholder="team@harvest.co" data-i18n-placeholder="buyerEmailPlaceholder" />
+          </label>
+          <label>
+            <span data-i18n="buyerNeedLabel">What are you sourcing?</span>
+            <input type="text" required placeholder="Organic pulses" data-i18n-placeholder="buyerNeedPlaceholder" />
+          </label>
+          <button type="submit" data-i18n="loginAction">Login now</button>
+          <p class="register-note">
+            <span data-i18n="registerPrompt">New to Agrivoultion?</span>
+            <a href="#" data-i18n="registerLink">Create a buyer profile</a>
+          </p>
+        </form>
+      </div>
+    </div>
+
+    <main>
+      <section id="solutions" class="panel">
+        <h2 data-i18n="solutionsHeading">Living systems, living data</h2>
+        <div class="grid">
+          <article>
+            <h3 data-i18n="soilIntelligenceTitle">Soil intelligence</h3>
+            <p data-i18n="soilIntelligenceCopy">
+              Real-time microbial and moisture insights help dial in irrigation
+              and nutrient plans with precision.
+            </p>
+          </article>
+          <article>
+            <h3 data-i18n="adaptiveTitle">Adaptive crop plans</h3>
+            <p data-i18n="adaptiveCopy">
+              Predictive models translate climate signals into resilient crop
+              rotations.
+            </p>
+          </article>
+          <article>
+            <h3 data-i18n="communityTitle">Community markets</h3>
+            <p data-i18n="communityCopy">
+              Connect growers, buyers, and co-ops with transparent
+              farm-to-fork storylines.
+            </p>
+          </article>
+        </div>
+      </section>
+
+      <section id="impact" class="panel highlight">
+        <h2 data-i18n="impactHeading">Impact in motion</h2>
+        <ul class="stats">
+          <li>
+            <span class="stat-value" data-i18n="statWaterValue">32%</span>
+            <span class="stat-label" data-i18n="statWaterLabel"
+              >Water saved</span
+            >
+          </li>
+          <li>
+            <span class="stat-value" data-i18n="statHectaresValue">18k</span>
+            <span class="stat-label" data-i18n="statHectaresLabel"
+              >Hectares restored</span
+            >
+          </li>
+          <li>
+            <span class="stat-value" data-i18n="statRetentionValue">94%</span>
+            <span class="stat-label" data-i18n="statRetentionLabel"
+              >Farmer retention</span
+            >
+          </li>
+        </ul>
+      </section>
+
+      <section id="contact" class="panel contact">
+        <h2 data-i18n="contactHeading">Grow with us</h2>
+        <form>
+          <label>
+            <span data-i18n="contactNameLabel">Name</span>
+            <input
+              type="text"
+              placeholder="Amara K."
+              required
+              data-i18n-placeholder="contactNamePlaceholder"
+            />
+          </label>
+          <label>
+            <span data-i18n="contactEmailLabel">Email</span>
+            <input
+              type="email"
+              placeholder="amara@agrivoultion.org"
+              required
+              data-i18n-placeholder="contactEmailPlaceholder"
+            />
+          </label>
+          <label>
+            <span data-i18n="contactMessageLabel"
+              >How can we collaborate?</span
+            >
+            <textarea
+              rows="4"
+              placeholder="Let's pilot..."
+              required
+              data-i18n-placeholder="contactMessagePlaceholder"
+            ></textarea>
+          </label>
+          <button type="submit" data-i18n="contactButton">Send a message</button>
+        </form>
+      </section>
+    </main>
+
+    <footer>
+      <p>
+        © <span id="year"></span>
+        <span data-i18n="footerTagline"
+          >Agrivoultion. Cultivating futures together.</span
+        >
+      </p>
+    </footer>
+
+    <script>
+      const heroContent = document.querySelector(".hero-content");
+      document.getElementById("year").textContent = new Date().getFullYear();
+
+      const blurThreshold = () => heroContent.offsetHeight * 0.2;
+
+      const updateHeroBlur = () => {
+        const scrollY = window.scrollY || window.pageYOffset;
+        const threshold = blurThreshold();
+        if (scrollY <= threshold) {
+          heroContent.style.setProperty("--hero-blur", "blur(0px)");
+          return;
+        }
+        const progress = Math.min((scrollY - threshold) / (threshold * 1.5), 1);
+        heroContent.style.setProperty("--hero-blur", `blur(${progress * 12}px)`);
+      };
+
+      window.addEventListener("scroll", updateHeroBlur, { passive: true });
+      window.addEventListener("resize", updateHeroBlur);
+      updateHeroBlur();
+
+      const translations = {
+        en: {
+          brand: "Agrivoultion",
+          navSolutions: "Solutions",
+          navImpact: "Impact",
+          navPartners: "Partners",
+          navContact: "Get Involved",
+          navLogin: "Login",
+          heroEyebrow: "Smart farming for resilient futures",
+          heroHeadline:
+            "Reimagining agriculture through data, design, and stewardship.",
+          heroLead:
+            "Agrivoultion blends regenerative practices with sensor intelligence so farmers can grow more with less, restore soil health, and protect our planet.",
+          ctaPrimary: "Join the movement",
+          ctaSecondary: "See the impact",
+          bubbleCommunityTitle: "Community",
+          bubbleCommunityBody:
+            "Our community hub unites growers, mentors, and local champions to swap best practices, celebrate harvests, and mobilize support in moments that matter.",
+          bubbleAiTitle: "Arnak AI",
+          bubbleAiBody:
+            "Arnak AI listens to farmer challenges, answers agronomy queries, scans market trends, and keeps every feature of Agrivoultion just one chat away.",
+          bubbleMarketTitle: "Market",
+          bubbleMarketBody:
+            "Our market lane connects co-ops, buyers, and logistics partners so every crop moves from field to fair price with clarity.",
+          bubbleLearnTitle: "Learn Hub",
+          bubbleLearnBody:
+            "Learn Hub blends micro-courses, live labs, and agritech primers so newcomers and experts grow skills side by side.",
+          bubbleCampaignTitle: "Campaign",
+          bubbleCampaignBody:
+            "Field campaigns tour villages with demos on organic methods, climate readiness, and collective stewardship for soil and water.",
+          loginTitle: "Access your Agrivoultion account",
+          farmerTab: "Farmer Login",
+          buyerTab: "Buyer Login",
+          googleButton: "Continue with Google",
+          farmerNameLabel: "Farmer Name",
+          farmerNamePlaceholder: "Anaya Rao",
+          farmerIdLabel: "Farm ID / Email",
+          farmerIdPlaceholder: "farm-1024",
+          farmerRegionLabel: "Region",
+          farmerRegionPlaceholder: "Odisha",
+          buyerOrgLabel: "Organization / Buyer Name",
+          buyerOrgPlaceholder: "Harvest Co.",
+          buyerEmailLabel: "Business Email",
+          buyerEmailPlaceholder: "team@harvest.co",
+          buyerNeedLabel: "What are you sourcing?",
+          buyerNeedPlaceholder: "Organic pulses",
+          loginAction: "Login now",
+          registerPrompt: "New to Agrivoultion?",
+          registerLink: "Create your profile",
+          solutionsHeading: "Living systems, living data",
+          soilIntelligenceTitle: "Soil intelligence",
+          soilIntelligenceCopy:
+            "Real-time microbial and moisture insights help dial in irrigation and nutrient plans with precision.",
+          adaptiveTitle: "Adaptive crop plans",
+          adaptiveCopy:
+            "Predictive models translate climate signals into resilient crop rotations.",
+          communityTitle: "Community markets",
+          communityCopy:
+            "Connect growers, buyers, and co-ops with transparent farm-to-fork storylines.",
+          impactHeading: "Impact in motion",
+          statWaterValue: "32%",
+          statWaterLabel: "Water saved",
+          statHectaresValue: "18k",
+          statHectaresLabel: "Hectares restored",
+          statRetentionValue: "94%",
+          statRetentionLabel: "Farmer retention",
+          contactHeading: "Grow with us",
+          contactNameLabel: "Name",
+          contactNamePlaceholder: "Amara K.",
+          contactEmailLabel: "Email",
+          contactEmailPlaceholder: "amara@agrivoultion.org",
+          contactMessageLabel: "How can we collaborate?",
+          contactMessagePlaceholder: "Let's pilot regenerative acres together.",
+          contactButton: "Send a message",
+          footerTagline: "Agrivoultion. Cultivating futures together.",
+        },
+        od: {
+          brand: "ଏଗ୍ରିଭୋଲୁଶନ୍",
+          navSolutions: "ସମାଧାନ",
+          navImpact: "ପ୍ରଭାବ",
+          navPartners: "ସହଯୋଗୀ",
+          navContact: "ଯୁକ୍ତ ହେଉନ୍ତୁ",
+          navLogin: "ଲଗଇନ୍",
+          heroEyebrow: "ଟିକେଉ କୃଷି ପାଇଁ ସ୍ମାର୍ଟ ପଦକ୍ଷେପ",
+          heroHeadline:
+            "ଡାଟା, ଡିଜାଇନ୍ ଓ ଯତ୍ନ ସହ କୃଷିକୁ ନୂଆ ଭାବେ କଳ୍ପନା ।",
+          heroLead:
+            "ଏଗ୍ରିଭୋଲୁଶନ୍ ମାଟିର ସ୍ୱାସ୍ଥ୍ୟ ଓ ପରିବେଶକୁ ସୁରକ୍ଷା କରି କମ୍ ସମ୍ପଦରେ ଅଧିକ ଉତ୍ପାଦନ ପାଇଁ ସେନ୍ସର ତଥ୍ୟର ସହଯୋଗ କରେ ।",
+          ctaPrimary: "ଆନ୍ଦୋଳନରେ ଯୁକ୍ତ ହେଉନ୍ତୁ",
+          ctaSecondary: "ପ୍ରଭାବ ଦେଖନ୍ତୁ",
+          bubbleCommunityTitle: "ସମୁଦାୟ",
+          bubbleCommunityBody:
+            "ଆମ ସମୁଦାୟ କ୍ଷେତ୍ର ଚାଷୀ, ମେଣ୍ଟର ଓ ସ୍ଥାନୀୟ ନାୟକମାନଙ୍କୁ ଏକାହେଳାଣୀ କରି ଅନୁଭବ ବିନିମୟ, ଫସଲ ଉତ୍ସବ ଓ ସହାୟତା ମୋବିଲାଇଜ କରେ ।",
+          bubbleAiTitle: "ଆର୍ଣ୍ଣକ୍ AI",
+          bubbleAiBody:
+            "ଆର୍ଣ୍ଣକ୍ AI ଚାଷୀଙ୍କ ସମସ୍ୟା ଶୁଣେ, କୃଷି ସନ୍ଦେହର ଉତ୍ତର ଦେଇ, ବଜାର ପ୍ରବୃତ୍ତି ଆଲୋଚନା କରେ ଓ ସମସ୍ତ ସୁବିଧାକୁ ଏକ ଚାଟ୍ ଦୂରରେ ରଖେ ।",
+          bubbleMarketTitle: "ବଜାର",
+          bubbleMarketBody:
+            "ଆମ ବଜାର ପେଜ୍ କୋଅପ୍, କ୍ରେତା ଓ ଲଜିଷ୍ଟିକ୍ସକୁ ଯୋଡ଼ି ପ୍ରତ୍ୟେକ ଫସଲକୁ ସ୍ପଷ୍ଟ ମୂଲ୍ୟରେ ପହଞ୍ଚାଏ ।",
+          bubbleLearnTitle: "ଲେର୍ନ ହବ୍",
+          bubbleLearnBody:
+            "ଲେର୍ନ ହବ୍ ମାଇକ୍ରୋ-କୋର୍ସ, ଲାଇଭ୍ ଲାବ୍ ଓ ଏଗ୍ରିଟେକ୍ ପ୍ରାଇମର୍ ସହ ନୂତନ ଓ ପ୍ରବୀଣଙ୍କୁ ସଙ୍ଗେ ସଙ୍ଗେ ଶିଖିବାରେ ସହାଯ୍ୟ କରେ ।",
+          bubbleCampaignTitle: "କ୍ୟାମ୍ପେନ୍",
+          bubbleCampaignBody:
+            "କ୍ଷେତ୍ର କ୍ୟାମ୍ପେନ୍ ଗାଁରେ ଜାଇ ଜୈବିକ ପ୍ରଣାଳୀ, ଜଳବାୟୁ ପ୍ରସ୍ତୁତି ଓ ସାମୁହିକ ଭୂମି-ଜଳ ସୁରକ୍ଷା ପ୍ରଦର୍ଶନ କରେ ।",
+          loginTitle: "ଆପଣଙ୍କ ଏଗ୍ରିଭୋଲୁଶନ୍ ଖାତାକୁ ପ୍ରବେଶ କରନ୍ତୁ",
+          farmerTab: "ଚାଷୀ ଲଗଇନ୍",
+          buyerTab: "କ୍ରେତା ଲଗଇନ୍",
+          googleButton: "ଗୁଗଲ୍ ସହିତ ଚାଲନ୍ତୁ",
+          farmerNameLabel: "ଚାଷୀଙ୍କ ନାମ",
+          farmerNamePlaceholder: "ଆନାୟା ରାଓ",
+          farmerIdLabel: "ଫାର୍ମ ଆଇଡି / ଇମେଲ୍",
+          farmerIdPlaceholder: "farm-1024",
+          farmerRegionLabel: "ଅଞ୍ଚଳ",
+          farmerRegionPlaceholder: "ଓଡିଶା",
+          buyerOrgLabel: "ସଂସ୍ଥା / କ୍ରେତା ନାମ",
+          buyerOrgPlaceholder: "ହାରଭେଷ୍ଟ କୋ.",
+          buyerEmailLabel: "ବ୍ୟବସାୟିକ ଇମେଲ୍",
+          buyerEmailPlaceholder: "team@harvest.co",
+          buyerNeedLabel: "ଆପଣ କଣ କିଣୁଛନ୍ତି?",
+          buyerNeedPlaceholder: "ଜୈବିକ ଡାଲି",
+          loginAction: "ଏବେ ଲଗଇନ୍ କରନ୍ତୁ",
+          registerPrompt: "ନୂଆ ନା?",
+          registerLink: "ଆପଣଙ୍କ ପ୍ରୋଫାଇଲ୍ ସୃଷ୍ଟି କରନ୍ତୁ",
+          solutionsHeading: "ଜୀବନ୍ତ ପ୍ରଣାଳୀ, ଜୀବନ୍ତ ତଥ୍ୟ",
+          soilIntelligenceTitle: "ମାଟି ବୁଦ୍ଧିମତ୍ତା",
+          soilIntelligenceCopy:
+            "ସମୟୋପଯୋଗୀ ଆର୍ଦ୍ରତା ଓ ଜୀବାଣୁ ତଥ୍ୟ ସହ ଜଳସେଚନ ଓ ପୋଷଣ ଯୋଜନା ସଠିକ୍ ହୁଏ ।",
+          adaptiveTitle: "ଅନୁକଳନଶୀଳ ଚାଷ ଯୋଜନା",
+          adaptiveCopy:
+            "ଅନୁମାନ ମଡେଲ୍ ଜଳବାୟୁ ସଙ୍କେତକୁ ସହଜେ ଧାନ୍ୟଚକ୍ରରେ ଅନୁବାଦ କରେ ।",
+          communityTitle: "ସମୁଦାୟ ମାର୍କେଟ୍",
+          communityCopy:
+            "ଚାଷୀ, କ୍ରେତା ଓ ସଂଘମାନଙ୍କୁ ପାରଦର୍ଶୀ ଫାର୍ମ-ଟୁ-ଫୋର୍କ କଥା ସହ ଯୋଡ଼େ ।",
+          impactHeading: "ଚଳନ୍ତି ପ୍ରଭାବ",
+          statWaterValue: "୩୨%",
+          statWaterLabel: "ଜଳ ସଞ୍ଚୟ",
+          statHectaresValue: "୧୮କେ",
+          statHectaresLabel: "ପୁନରୁଦ୍ଧାରିତ ହେକ୍ଟର",
+          statRetentionValue: "୯୪%",
+          statRetentionLabel: "ଚାଷୀ ଅବଶେଷ",
+          contactHeading: "ଆମ ସହ ବୃଦ୍ଧି କରନ୍ତୁ",
+          contactNameLabel: "ନାମ",
+          contactNamePlaceholder: "ଆମରା କେ ।",
+          contactEmailLabel: "ଇମେଲ୍",
+          contactEmailPlaceholder: "amara@agrivoultion.org",
+          contactMessageLabel: "ଆମେ କିପରି ସହକାର କରିବୁ?",
+          contactMessagePlaceholder: "ଚଲନ୍ତୁ ନୂଆ ମାଡ଼ ମୋଡ଼େଲ୍ ପାଇଲଟ୍ କରିବା ।",
+          contactButton: "ବାର୍ତ୍ତା ପଠାନ୍ତୁ",
+          footerTagline: "ଏଗ୍ରିଭୋଲୁଶନ୍। ଏକାସାଥିରେ ଭବିଷ୍ୟ ଚାଷ ।",
+        },
+        hi: {
+          brand: "एग्रीवोल्यूशन",
+          navSolutions: "समाधान",
+          navImpact: "प्रभाव",
+          navPartners: "भागीदार",
+          navContact: "शामिल हों",
+          navLogin: "लॉग इन",
+          heroEyebrow: "टिकाऊ भविष्य के लिए स्मार्ट खेती",
+          heroHeadline:
+            "डेटा, डिजाइन और संरक्षण के साथ कृषि को नया रूप देना।",
+          heroLead:
+            "एग्रीवोल्यूशन, संवेदक बुद्धिमत्ता और पुनर्जीवित तरीकों को जोड़कर किसानों को कम संसाधनों में अधिक उगाने और मिट्टी को सुरक्षित रखने में मदद करता है।",
+          ctaPrimary: "आन्दोलन से जुड़ें",
+          ctaSecondary: "प्रभाव देखें",
+          bubbleCommunityTitle: "समुदाय",
+          bubbleCommunityBody:
+            "हमारा समुदाय हब किसानों, मार्गदर्शकों और स्थानीय नायकों को जोड़कर अनुभव साझा करता है, फसल की खुशी मनाता है और ज़रूरत के समय मदद पहुँचाता है।",
+          bubbleAiTitle: "Arnak AI",
+          bubbleAiBody:
+            "Arnak AI किसानों की चुनौतियाँ सुनता है, कृषि सवालों का जवाब देता है, बाजार रुझान बताता है और पूरे Agrivoultion अनुभव को चैट में उपलब्ध कराता है।",
+          bubbleMarketTitle: "बाज़ार",
+          bubbleMarketBody:
+            "हमारा बाज़ार पेज सहकारी, खरीदार और लॉजिस्टिक्स को मिलाकर हर फसल को खेत से उचित कीमत तक पारदर्शी तरीके से पहुँचाता है।",
+          bubbleLearnTitle: "लर्न हब",
+          bubbleLearnBody:
+            "लर्न हब माइक्रो-कोर्स, लाइव लैब और एग्रीटेक पाठ के ज़रिए नए और अनुभवी किसानों दोनों को साथ में सीखने में मदद करता है।",
+          bubbleCampaignTitle: "अभियान",
+          bubbleCampaignBody:
+            "हमारे फील्ड अभियान गाँवों में जाकर जैविक खेती, जलवायु तैयारी और साझा संसाधन संरक्षण की व्यवहारिक ट्रेनिंग देते हैं।",
+          loginTitle: "अपना एग्रीवोल्यूशन अकाउंट एक्सेस करें",
+          farmerTab: "किसान लॉगइन",
+          buyerTab: "खरीदार लॉगइन",
+          googleButton: "Google के साथ जारी रखें",
+          farmerNameLabel: "किसान का नाम",
+          farmerNamePlaceholder: "अनाया राव",
+          farmerIdLabel: "फार्म आईडी / ईमेल",
+          farmerIdPlaceholder: "farm-1024",
+          farmerRegionLabel: "क्षेत्र",
+          farmerRegionPlaceholder: "ओडिशा",
+          buyerOrgLabel: "संस्था / खरीदार नाम",
+          buyerOrgPlaceholder: "हार्वेस्ट को.",
+          buyerEmailLabel: "व्यावसायिक ईमेल",
+          buyerEmailPlaceholder: "team@harvest.co",
+          buyerNeedLabel: "आप क्या खरीद रहे हैं?",
+          buyerNeedPlaceholder: "ऑर्गेनिक दालें",
+          loginAction: "अभी लॉगइन करें",
+          registerPrompt: "क्या आप नए हैं?",
+          registerLink: "अपनी प्रोफ़ाइल बनाएँ",
+          solutionsHeading: "जीवित प्रणाली, जीवित डेटा",
+          soilIntelligenceTitle: "मृदा बुद्धिमत्ता",
+          soilIntelligenceCopy:
+            "रीयल-टाइम आर्द्रता और माइक्रोब डाटा से सिंचाई और पोषण योजनाएँ सटीक बनती हैं।",
+          adaptiveTitle: "अनुकूली फसल योजनाएँ",
+          adaptiveCopy:
+            "पूर्वानुमान मॉडल जलवायु संकेत को लचीली फसल चक्रों में बदलते हैं।",
+          communityTitle: "सामुदायिक बाज़ार",
+          communityCopy:
+            "किसानों, खरीदारों और सहकारी समितियों को पारदर्शी खेत-से-थाली कहानियों से जोड़ता है।",
+          impactHeading: "प्रभाव की रफ्तार",
+          statWaterValue: "32%",
+          statWaterLabel: "बचाया गया पानी",
+          statHectaresValue: "18k",
+          statHectaresLabel: "पुनर्जीवित हेक्टेयर",
+          statRetentionValue: "94%",
+          statRetentionLabel: "किसान बने रहे",
+          contactHeading: "हमारे साथ बढ़ें",
+          contactNameLabel: "नाम",
+          contactNamePlaceholder: "अमारा के.",
+          contactEmailLabel: "ईमेल",
+          contactEmailPlaceholder: "amara@agrivoultion.org",
+          contactMessageLabel: "हम कैसे सहयोग करें?",
+          contactMessagePlaceholder: "आइए पुनर्योजी खेतों का पायलट करें।",
+          contactButton: "संदेश भेजें",
+          footerTagline: "एग्रीवोल्यूशन। साथ मिलकर भविष्य की खेती।",
+        },
+      };
+
+      const textNodes = document.querySelectorAll("[data-i18n]");
+      const placeholderNodes = document.querySelectorAll(
+        "[data-i18n-placeholder]"
+      );
+      const switcher = document.getElementById("language-switcher");
+      const loginModal = document.getElementById("login-modal");
+      const openLogin = document.getElementById("open-login");
+      const closeLogin = document.getElementById("close-login");
+      const loginOverlay = document.getElementById("login-overlay");
+      const switchButtons = document.querySelectorAll("[data-login-target]");
+      const loginForms = document.querySelectorAll(".login-form");
+
+      const applyLanguage = (code) => {
+        const strings = translations[code] || translations.en;
+        textNodes.forEach((node) => {
+          const key = node.dataset.i18n;
+          if (strings[key]) {
+            node.textContent = strings[key];
+          }
+        });
+
+        placeholderNodes.forEach((node) => {
+          const key = node.dataset.i18nPlaceholder;
+          if (strings[key]) {
+            node.placeholder = strings[key];
+          }
+        });
+      };
+
+      switcher.addEventListener("change", (event) => {
+        applyLanguage(event.target.value);
+      });
+
+      applyLanguage("en");
+
+      const toggleLoginModal = (show) => {
+        if (!loginModal) return;
+        loginModal.classList.toggle("visible", show);
+        loginModal.setAttribute("aria-hidden", show ? "false" : "true");
+        document.body.classList.toggle("modal-open", show);
+      };
+
+      openLogin?.addEventListener("click", () => toggleLoginModal(true));
+      closeLogin?.addEventListener("click", () => toggleLoginModal(false));
+      loginOverlay?.addEventListener("click", () => toggleLoginModal(false));
+
+      window.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") toggleLoginModal(false);
+      });
+
+      switchButtons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = button.dataset.loginTarget;
+          switchButtons.forEach((btn) => btn.classList.remove("active"));
+          button.classList.add("active");
+          loginForms.forEach((form) => {
+            form.classList.toggle("active", form.dataset.login === target);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
+
